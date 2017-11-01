@@ -1,0 +1,106 @@
+.body-align {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.bgimage {
+    background: url('../assets/banner.png');
+}
+
+.image {
+    width: 100%; /* for IE 6 */
+}
+
+.div-banner {
+    position: absolute;
+    top: 20px;
+    left: 200px;
+}
+
+h5 {
+    position: absolute;
+    top: 20px;
+    left: 250px;
+    width: 100%;
+}
+
+.color-pay {
+    color: #da7514;
+}
+
+.header-cadastro-positivo {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#iconlist {
+    position: relative;
+}
+
+#iconlist span, #navlist a {
+    left: 0;
+    display: block;
+}
+
+#iconpc {
+    margin: auto;
+    height: 70px;
+    width: 75px;
+    background-image: url('../assets/sprite.png');
+    background-position: 0px 0px;
+}
+
+#iconplus {
+    margin: auto;
+    height: 71px;
+    width: 75px;
+    background-image: url('../assets/sprite.png');
+    background-position: 0px -71px;
+}
+
+#icontrevo {
+    margin: auto;
+    height: 71px;
+    width: 75px;
+    background-image: url('../assets/sprite.png');
+    background-position: 0px -142px;
+}
+
+#iconcalendar {
+    height: 69px;
+    width: 92px;
+    background-image: url('../assets/sprite.png');
+    background-position: 0px -213px;
+    float: left;
+}
+
+#iconcalendar > label {
+    padding-top: 25px;
+    padding-left: 20px;
+    color: #9331A3;
+}
+
+#iconcalendar > span {
+    color: #9331A3;
+}
+
+.btn-purple {
+    color: #fff;
+    border-color: #9331A3;
+    background-color: #9331A3;
+}
+
+.btn-purple:focus {
+    border-color: #742281;
+    background-color: #742281;
+}
+
+.btn-purple:hover {
+    border-color: #742281;
+    background-color: #742281;
+}
+
+.color-purple {
+    color: #81278F;
+    font-weight: bold;
+}

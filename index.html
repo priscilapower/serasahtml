@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Teste HTML</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+<header class="text-white ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img src="assets/banner.png" class="img-fluid">
+
+    <div class="col-lg-3 d-sm-block div-banner text-sm-center">
+                  <span>O SerasaConsumidor <br/> ajuda a
+                    <span class="color-pay"><strong>pagar sua dívida!</strong></span>
+                    Abra seu cadastro Positivo e concorra <br/> a
+                    <span class="color-pay">R$ 5.000,00</span><br/><br/>
+                    <button class="btn btn-primary btn-sm">PARTICIPE JÁ, É GRÁTIS</button><br/>
+                    <span class="text-sm-center" style="font-size: x-small">Saiba o que é o <span
+                            class="header-cadastro-positivo">Cadastro Positivo</span></span>
+                  </span>
+    </div>
+</header>
+<br/>
+<div class="container body-align" id="iconlist">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <span>Quer saber como abrir seu Cadastro Positivo e ainda concorrer a prêmios?</span>
+        </div>
+    </div>
+
+    <br/><br/><br/>
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <span id="iconpc"></span>
+            <label class="color-purple">1.</label> Cadastre-se no <br/><label
+                class="color-purple">SERASACONSUMIDOR</label>
+        </div>
+        <div class="col-md-4 text-center">
+            <span id="iconplus"></span>
+            <label class="color-purple">2.</label> Abra o seu <br/><label class="color-purple">CADASTRO POSITIVO</label>
+            <br/><br/>
+            <button class="btn btn-purple btn-sm">PARTICIPE JÁ, É GRÁTIS</button>
+        </div>
+        <div class="col-md-4 text-center">
+            <span id="icontrevo"></span>
+            <label class="color-purple">3.</label> Receba o <label class="color-purple">número e data do sorteio</label><br/>
+            no seu e-mail<br/>
+            <label style="font-size: x-small">(Cada CPF participa de apenas um sorteio)</label>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-8">
+            <h6>Abrindo seu <strong>Cadastro Positivo</strong> você pode ganhar <br/>
+                até <label class="color-purple">R$ 5.000,00</label></h6>
+            <label style="font-size: x-small">Cada CPF participa de apenas um sorteio. Assim que seu <strong>Cadastro
+                Positivo</strong>
+                for concluído, você vai receber por e-mail o seu número da sorte e a data do sorteio que você vai
+                participar.
+                Depois é só torcer para ser o ganhador.</label>
+        </div>
+        <div class="col-md-4 text-left">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">14/09</label></span>
+                </div>
+                <div class="col-md-4">
+                    <span class="color-purple" style="font-size: small">Próximo sorteio</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h6><strong>Ganhadores</strong></h6>
+            <div id="ganhadores">
+
+            </div>
+        </div>
+        <div class="col-md-4 text-left">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">14/09</label></span>
+                </div>
+                <div class="col-md-4">
+                    <span class="color-purple" style="font-size: small">Datas dos sorteios</span>
+                    <div id="sorteios">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom JavaScript for this theme -->
+<script src="js/scrolling-nav.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "dados.json",
+        })
+        .done(function (data) {
+            console.log(data);
+            console.log(data.ganhadores);
+            console.log(data.sorteio);
+            if(data.ganhadores) {
+                console.info(data);
+                result = '<table>';
+                $.each(data.ganhadores, function(key, ganhador){
+                    result += '<tr>';
+                    result += '    <td>'+ganhador.data+'</td>';
+                    result += '    <td>'+ganhador.cidade+'</td>';
+                    result += '    <td>'+ganhador.num_sorteado+'</td>';
+                    result += '</tr>';
+                });
+                result += '</table>';
+                $("#ganhadores").html(result);
+            }
+
+            if(data.sorteio) {
+                result = '<table class="table table-bordered">';
+                result += '<tr>';
+                result += '    <td>1</td>';
+                result += '    <td>2</td>';
+                result += '    <td>3</td>';
+                result += '    <td>4</td>';
+                result += '    <td>5</td>';
+                result += '</tr>';
+                result += '<tbody>';
+                $.each(data.sorteio, function(key, sorteio){
+                    console.info(sorteio);
+                        result += '<tr>';
+                        result += ' <td>';
+                        result += '     <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">' + sorteio + '</label></span>';
+                        result += ' </td>';
+                        result += ' <td>';
+                        result += '     <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">' + sorteio + '</label></span>';
+                        result += ' </td>';
+                        result += ' <td>';
+                        result += '     <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">' + sorteio + '</label></span>';
+                        result += ' </td>';
+                        result += ' <td>';
+                        result += '     <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">' + sorteio + '</label></span>';
+                        result += ' </td>';
+                        result += ' <td>';
+                        result += '     <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">' + sorteio + '</label></span>';
+                        result += ' </td>';
+                    result += '</tr>';
+                });
+                result += '     </tbody>';
+                result += '</table>';
+                $("#sorteios").html(result);
+            }
+
+        });
+    });
+</script>
+
+
+</body>
+
+</html>
