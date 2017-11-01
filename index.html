@@ -23,8 +23,9 @@
                     Abra seu cadastro Positivo e concorra <br/> a
                     <span class="color-pay">R$ 5.000,00</span><br/><br/>
                     <button class="btn btn-primary btn-sm">PARTICIPE JÁ, É GRÁTIS</button><br/>
-                    <span class="text-sm-center" style="font-size: x-small">Saiba o que é o <span
-                            class="header-cadastro-positivo">Cadastro Positivo</span></span>
+                    <a class="text-sm-center" style="font-size: x-small; cursor: pointer;" data-toggle="modal" data-target="#exampleModal" >Saiba o que é o
+                        <span class="header-cadastro-positivo">Cadastro Positivo</span>
+                    </a>
                   </span>
     </div>
 </header>
@@ -78,6 +79,7 @@
             </div>
         </div>
     </div>
+    <br/><br/><br/>
     <div class="row">
         <div class="col-md-8">
             <h6><strong>Ganhadores</strong></h6>
@@ -87,21 +89,37 @@
         </div>
         <div class="col-md-4 text-left">
             <div class="col-md-12">
-                <div class="col-md-4">
-                    <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">14/09</label></span>
-                </div>
-                <div class="col-md-4">
-                    <span class="color-purple" style="font-size: small">Datas dos sorteios</span>
-                    <div id="sorteios">
+                <h6><strong>Datas dos sorteios</strong></h6>
+                <div id="sorteios">
 
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #64267B">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Cadastro Positivo Serasa</h5>
+                <button class="close sprite" type="button" data-dismiss="modal" aria-label="Close" style="cursor: pointer;">
+                    <img src="assets/fechar.png">
+                </button>
+
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12 text-center">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/MmUqqYWI_aU" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: #E2A236">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Footer -->
-<footer class="py-5 bg-dark">
+<footer class="py-5 footer">
     <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
     </div>
@@ -122,57 +140,31 @@
     $(document).ready(function () {
         $.ajax({
             url: "dados.json",
+            dataType: "json"
         })
         .done(function (data) {
-            console.log(data);
-            console.log(data.ganhadores);
-            console.log(data.sorteio);
             if(data.ganhadores) {
-                console.info(data);
-                result = '<table>';
+                result = '';
+                result += '<div class="row" >';
                 $.each(data.ganhadores, function(key, ganhador){
-                    result += '<tr>';
-                    result += '    <td>'+ganhador.data+'</td>';
-                    result += '    <td>'+ganhador.cidade+'</td>';
-                    result += '    <td>'+ganhador.num_sorteado+'</td>';
-                    result += '</tr>';
+                    result += '<div class="col-md-6">';
+                    result += '    <span id="iconganhador"><label id="labelganhador" class="text-sm-center">'+ganhador.data+'</label></span>';
+                    result += '    <label id="labelcidadeganhador">'+ganhador.cidade+'</label><br/>';
+                    result += '    <label id="labelnumeroganhador">Número: '+ganhador.num_sorteado+'</label>';
+                    result += '</div>';
                 });
-                result += '</table>';
+                result += '</div>';
                 $("#ganhadores").html(result);
             }
 
             if(data.sorteio) {
-                result = '<table class="table table-bordered">';
-                result += '<tr>';
-                result += '    <td>1</td>';
-                result += '    <td>2</td>';
-                result += '    <td>3</td>';
-                result += '    <td>4</td>';
-                result += '    <td>5</td>';
-                result += '</tr>';
-                result += '<tbody>';
-                $.each(data.sorteio, function(key, sorteio){
-                    console.info(sorteio);
-                        result += '<tr>';
-                        result += ' <td>';
-                        result += '     <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">' + sorteio + '</label></span>';
-                        result += ' </td>';
-                        result += ' <td>';
-                        result += '     <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">' + sorteio + '</label></span>';
-                        result += ' </td>';
-                        result += ' <td>';
-                        result += '     <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">' + sorteio + '</label></span>';
-                        result += ' </td>';
-                        result += ' <td>';
-                        result += '     <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">' + sorteio + '</label></span>';
-                        result += ' </td>';
-                        result += ' <td>';
-                        result += '     <span id="iconcalendar"><label id="labelcalendar" class="text-sm-center">' + sorteio + '</label></span>';
-                        result += ' </td>';
-                    result += '</tr>';
+                result = '<div class="row">';
+                $.each(data.sorteio, function(key, sorteiodata){
+                    result += ' <div>';
+                    result += '     <span id="iconsorteio"><label id="" class="text-sm-center">' + sorteiodata + '</label></span>';
+                    result += ' </div>';
                 });
-                result += '     </tbody>';
-                result += '</table>';
+                result += '</div>';
                 $("#sorteios").html(result);
             }
 

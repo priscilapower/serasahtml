@@ -84,6 +84,48 @@ h5 {
     color: #9331A3;
 }
 
+#iconganhador {
+    height: 47px;
+    width: 92px;
+    background-image: url('../assets/sprite.png');
+    background-position: 0px -320px;
+    float: left;
+}
+
+#iconganhador > label {
+    padding-top: 16px;
+    padding-left: 6px;
+    color: #9331A3;
+}
+
+#iconganhador > span {
+    color: #9331A3;
+}
+
+#labelcidadeganhador {
+    color: #0056b3;
+    font-size: x-small;
+    font-weight: bold;
+}
+
+#labelnumeroganhador {
+    font-size: x-small;
+}
+
+#iconsorteio {
+    height: 40px;
+    width: 50px;
+    background-image: url('../assets/sprite.png');
+    background-position: 0px -282px;
+    float: left;
+}
+
+#iconsorteio > label {
+    padding-top: 8px;
+    padding-left: 2px;
+    color: #9331A3;
+}
+
 .btn-purple {
     color: #fff;
     border-color: #9331A3;
@@ -103,4 +145,16 @@ h5 {
 .color-purple {
     color: #81278F;
     font-weight: bold;
+}
+
+.close .sprite {
+    image-rendering: '/assets/fechar.png' !important;
+}
+
+.close .sprite > button {
+    cursor: pointer;
+}
+
+.footer {
+    background-color: #64267B;
 }
